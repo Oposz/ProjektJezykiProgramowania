@@ -1,0 +1,44 @@
+//@import "variables";
+
+.repos-list {
+  margin: 0 auto;
+  width: 1200px;
+  height: 620px;
+  overflow: hidden;
+  box-shadow: 1px 0px 16px rgba(0, 0, 0, 0.17);
+  border-radius: 10px;
+  padding: 40px 0;
+  &__loader-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: column;
+    height: 100%;
+    padding: 0 40px;
+    &__loader {
+      width: 200px;
+      height: 200px;
+      margin: auto;
+    }
+  }
+  &__comunicat {
+      margin: auto;
+      //color: $primary-color;
+    }
+  &__repo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+    }
+}
+ng-scrollbar{
+  --scrollbar-size:4px;
+  --scrollbar-thumb-color:#a8a8a8;
+  --scrollbar-border-radius: 50px;
+  --scrollbar-track-color: #e1e1e1;
+  margin: 14px;
+}
+@media (max-width: 1199px) {
+  .repos-list{
+    visibility: hidden;
+  }
+}

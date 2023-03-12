@@ -1,0 +1,12 @@
+
+<div class="repo">
+  <img [src]="repo.owner.avatar_url" alt="userPhoto" class="repo__photo" />
+  <div class="repo__data__wrapper">
+    <h4 class="repo__data__wrapper__name">{{ repo.name }}</h4>
+    <p class="repo__data__wrapper__description">{{ repo.description ?? 'Brak opisu' }}</p>
+    <p class="repo__data__wrapper__branch">{{ repo.default_branch }}</p>
+  </div>
+  <a class="repo__link" target="_blank" [href]="repo.html_url">
+    <img src="assets/arrow.svg" alt="przejdź do repo" />
+  </a>
+</div>

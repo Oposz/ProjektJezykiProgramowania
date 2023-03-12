@@ -1,0 +1,21 @@
+
+<div class="searchbar">
+  <p class="searchbar__instruction">{{ instruction }}</p>
+  <div class="searchbar__inside-wrapper">
+    <input
+      type="text"
+      class="searchbar__inside-wrapper__user-input"
+      [placeholder]="defaultUser"
+      [formControl]="searchInput"
+      (keydown.enter)="onSearchSubmit()"
+      [ngClass]="{'disabled': searchDisabled}"
+    />
+    <img
+      class="searchbar__inside-wrapper__user-input-button"
+      [ngClass]="{'visible': searchInput.valid}"
+      src="assets/arrow.svg"
+      alt="arrow"
+      (click)="onSearchSubmit()"
+    />
+  </div>
+</div>

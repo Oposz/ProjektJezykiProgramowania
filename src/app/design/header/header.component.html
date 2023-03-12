@@ -1,0 +1,15 @@
+<div class="header">
+  <div class="header__logo">
+    <app-logo></app-logo>
+  </div>
+  <div class="header__searchbar">
+    <div class="header__searchbar__position">
+      <app-search-bar
+        [instruction]="instruction"
+        [defaultUser]="defaultUser"
+        [searchDisabled]="searchDisabled"
+        (search)="onSearch($event)"
+      ></app-search-bar>
+    </div>
+  </div>
+</div>

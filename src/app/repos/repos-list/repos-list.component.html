@@ -1,0 +1,23 @@
+<div class="repos-list">
+  <ng-scrollbar #scrollable track="vertical" visibility="native" pointerEventMethod="scrollbar" >
+    <div class="repos-list__loader-container">
+      <img class="repos-list__loader-container__loader"
+      *ngIf="isLoading === true;"
+      src="assets/loader.gif"
+      alt="loader"
+      />
+      <ng-container  *ngIf="isLoading===false && !error " >
+        <div class="repos-list__repo" *ngIf="repos.length > 0">
+          <app-repo
+          *ngFor="let repo of repos"
+          [repo]="repo"
+          ></app-repo>
+        </div>
+      <h1 class="repos-list__comunicat" *ngIf="repos.length===0 && userName">
+        Użytkownik nie ma żadnego repo.
+      </h1>
+    </ng-container>
+      <h1 class="repos-list__comunicat" *ngIf="error" >{{ error }}</h1>
+    </div>
+  </ng-scrollbar>
+</div>
