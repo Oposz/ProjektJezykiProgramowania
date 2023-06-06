@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Repo} from 'src/app/shared/interfaces/repo.interface';
-import {LocalStorageService} from "../../core/service/local-storage.service";
+import {RepoLocalStorageService} from "./service/repo-local-storage.service";
 
 @Component({
     selector: 'app-repo[repo]',
@@ -11,20 +11,20 @@ export class RepoComponent {
     @Input() repo!: Repo;
 
     constructor(
-        private readonly localStorageService: LocalStorageService
+        private readonly repoLocalStorageService: RepoLocalStorageService
     ) {
     }
 
     addToFav(repo: Repo) {
-        this.localStorageService.setItem(repo.id.toString(), JSON.stringify(repo))
+        this.repoLocalStorageService.addRepoToFav(repo.id.toString(), repo)
     }
 
     removeFromFav(repo: Repo) {
-        this.localStorageService.deleteItem(repo.id.toString())
+        this.repoLocalStorageService.removeRepoFromFav(repo.id.toString())
     }
 
     inFavourite(repo: Repo) {
-        return !!this.localStorageService.getItem(repo.id.toString())
+        return this.repoLocalStorageService.getFavRepo(repo.id.toString())
     }
 
 }

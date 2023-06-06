@@ -1,16 +1,17 @@
 import {HttpClient} from '@angular/common/http';
-import {OnDestroy} from '@angular/core';
+import {OnDestroy, OnInit} from '@angular/core';
 import {Component} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {environment} from 'src/environments/environment';
 import {Repo} from './shared/interfaces/repo.interface';
+import {RepoLocalStorageService} from "./repos/repo/service/repo-local-storage.service";
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnInit, OnDestroy {
     title = 'Projekt';
     searchDisabled: boolean = false;
     repos: Repo[] = [];
@@ -20,7 +21,19 @@ export class AppComponent implements OnDestroy {
     isSearchDisabled: boolean = false;
     private sub = new Subscription;
 
-    constructor(private readonly http: HttpClient) {
+    constructor(
+        private readonly http: HttpClient,
+        private readonly repoLocalStorageService: RepoLocalStorageService
+    ) {
+    }
+
+    ngOnInit() {
+        this.repoLocalStorageService.loadFavRepos();
+        this.observeFavRepos()
+    }
+
+    private observeFavRepos() {
+        this.repoLocalStorageService.updateFavRepos.subscribe(() => this.repoLocalStorageService.loadFavRepos())
     }
 
     onPassSearch(value: string) {
