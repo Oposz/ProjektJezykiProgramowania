@@ -4,34 +4,47 @@
   padding: 26px 30px 26px 30px;
   background-color: rgb(50, 50, 50);
   border-radius: 10px;
+
   &__photo {
     width: 60px;
     height: 60px;
     border-radius: 50%;
     object-fit: cover;
   }
+
   &__data__wrapper {
     display: flex;
     flex-flow: column;
     overflow: hidden;
     width: 340px;
     margin: 0 20px;
-    &__name {
-      margin: 0;
+
+    &__header {
+      display: flex;
       margin-bottom: 4px;
-      color: #ebebf3;
+
+      &__name {
+        margin-right: 0.25rem;
+        color: #ebebf3;
+      }
+
+      &__star:hover, &__star-fav:hover {
+        cursor: pointer;
+      }
+
     }
+
     &__description {
       font-style: normal;
       font-weight: normal;
       font-size: 16px;
       line-height: 20px;
       color: #848484;
-      margin: 0;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
     }
+
     &__branch {
       font-style: normal;
       font-weight: normal;
@@ -41,6 +54,7 @@
       margin-bottom: auto;
     }
   }
+
   &__link {
     width: 34px;
     height: 34px;
